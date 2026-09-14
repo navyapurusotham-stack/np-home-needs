@@ -1131,3 +1131,110 @@
 
       if (!ok) return;
   
+      const { error } =
+        await supabaseClient
+          .from("products")
+          .update({ active: false })
+          .eq("id", id);
+
+      if (error) {
+        alert("Hide failed: " + error.message);
+        return;
+      }
+
+      await loadProducts();
+    }
+
+    // ================= SHOW PRODUCT =================
+
+    async function showProduct(id) {
+
+      const { error } =
+        await supabaseClient
+          .from("products")
+          .update({ active: true })
+          .eq("id", id);
+
+      if (error) {
+        alert("Show failed: " + error.message);
+        return;
+      }
+
+      await loadProducts();
+    }
+
+    // ================= DELETE PRODUCT =================
+
+    async function deleteProduct(id) {
+
+      const ok =
+        confirm("Ee product ni delete cheyyala?");
+
+      if (!ok) return;
+
+      const { error } =
+        await supabaseClient
+          .from("products")
+          .delete()
+          .eq("id", id);
+
+      if (error) {
+        alert("Delete failed: " + error.message);
+        return;
+      }
+
+      alert("Product deleted successfully.");
+
+      await loadProducts();
+    }
+
+    // ================= CLEAR FORM =================
+
+    function clearForm() {
+
+      document.getElementById("editId").value = "";
+
+      document.getElementById("productName").value = "";
+
+      document.getElementById("productCategory").value = "Kirana";
+
+      document.getElementById("productPrice").value = "";
+
+      document.getElementById("productOffer").value = "";
+
+      document.getElementById("productStock").value = "1";
+
+      document.getElementById("productImage").value = "";
+
+      document.getElementById("formTitle").textContent =
+        "➕ Add Product";
+
+      document
+        .getElementById("cancelEditBtn")
+        .classList.add("hidden");
+
+      document.getElementById("saveMessage").textContent = "";
+
+      document.getElementById("uploadStatus").textContent = "";
+    }
+
+    // ================= ESCAPE HTML =================
+
+    function escapeHtml(value) {
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // ================= START =================
+
+    checkLogin();
+
+  </script>
+
+</body>
+</html>
