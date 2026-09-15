@@ -662,12 +662,15 @@
 
 
         const image =
-          product.image_url
-
-            ? `<img
-                 src="${escapeHtml(product.image_url)}"
-                 alt=""
-               >`
+  product.image_url
+    ? `<img
+         src="${escapeHtml(
+           product.image_url.startsWith("http")
+             ? product.image_url
+             : "https://fpbmoddxkiykuhdxclmt.supabase.co/storage/v1/object/public/product-images/" + product.image_url.replace(/^images\/products\//, "")
+         )}"
+         alt=""
+       >`
 
             : `<div style="
                  width:90px;
