@@ -664,26 +664,32 @@
         const image =
   product.image_url
     ? `<img
-         src="${escapeHtml(
-           product.image_url.startsWith("http")
-             ? product.image_url
-             : "https://fpbmoddxkiykuhdxclmt.supabase.co/storage/v1/object/public/product-images/" + product.image_url.replace(/^images\/products\//, "")
-         )}"
-         alt=""
-       >`
-
-            : `<div style="
-                 width:90px;
-                 height:90px;
-                 background:#eee;
-                 border-radius:10px;
-                 display:flex;
-                 align-items:center;
-                 justify-content:center;
-               ">
-                 No Image
-               </div>`;
-
+         src="${escapeHtml(product.image_url)}"
+         alt="${escapeHtml(product.name || "")}"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+       >
+       <div style="
+         display:none;
+         width:90px;
+         height:90px;
+         background:#eee;
+         border-radius:10px;
+         align-items:center;
+         justify-content:center;
+       ">
+         No Image
+       </div>`
+    : `<div style="
+         width:90px;
+         height:90px;
+         background:#eee;
+         border-radius:10px;
+         display:flex;
+         align-items:center;
+         justify-content:center;
+       ">
+         No Image
+       </div>`;
 
         const offerText =
           product.offer_price !== null &&
