@@ -913,6 +913,24 @@
 
       let imageUrl = null;
 
+if (editId) {
+  const { data: existingProduct, error: existingError } =
+    await supabaseClient
+      .from("products")
+      .select("image_url")
+      .eq("id", editId)
+      .single();
+
+  if (existingError) {
+    message.className = "error";
+    message.textContent =
+      "Existing product load failed: " + existingError.message;
+    return;
+  }
+
+  imageUrl = existingProduct.image_url;
+}
+
 
       // ================= IMAGE UPLOAD =================
 
