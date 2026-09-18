@@ -230,6 +230,29 @@ function render() {
     }).join("");
 
 }
+function startOfferAutoScroll() {
+
+  const slider = document.getElementById("offerSlider");
+
+  if (!slider || slider.dataset.autoScroll === "true") return;
+
+  slider.dataset.autoScroll = "true";
+
+  setInterval(function () {
+
+    if (slider.scrollWidth <= slider.clientWidth) return;
+
+    slider.scrollLeft += 1;
+
+    if (
+      slider.scrollLeft + slider.clientWidth >=
+      slider.scrollWidth - 2
+    ) {
+      slider.scrollLeft = 0;
+    }
+
+  }, 30);
+}
 function escapeHTML(value) {
   return String(value)
     .replace(/&/g, "&amp;")
