@@ -51,6 +51,8 @@ async function loadProducts() {
 function render() {
   const grid = document.getElementById("grid");
 
+  renderSpecialOffers();
+
   if (!grid) return;
 
   const searchBox = document.getElementById("search");
