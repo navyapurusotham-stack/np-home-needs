@@ -134,13 +134,19 @@ function render() {
           ${priceHTML}
         </div>
 
-        <button
-          type="button"
-          class="add-cart-btn"
-          data-id="${product.id}"
-        >
-          🛒 Add to Cart
-        </button>
+       ${
+  Number(product.stock || 0) <= 0
+    ? `<button type="button" class="add-cart-btn" disabled>
+        ❌ SOLD OUT
+      </button>`
+    : `<button
+        type="button"
+        class="add-cart-btn"
+        data-id="${product.id}"
+      >
+        🛒 Add to Cart
+      </button>`
+       }
 
       </div>
     `;
