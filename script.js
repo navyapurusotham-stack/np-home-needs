@@ -163,7 +163,73 @@ function render() {
 
     });
 }
+ function renderSpecialOffers() {
 
+  const offerSlider =
+    document.getElementById("offerSlider");
+
+  const offerSection =
+    document.getElementById("specialOffers");
+
+  if (!offerSlider || !offerSection) return;
+
+  const offers = products.filter(function (product) {
+
+    const price = Number(product.price || 0);
+    const offer = Number(product.offer_price || 0);
+
+    return (
+      offer > 0 &&
+      price > 0 &&
+      offer < price &&
+      product.image_url
+    );
+
+  });
+
+  if (offers.length === 0) {
+
+    offerSection.style.display = "none";
+    offerSlider.innerHTML = "";
+    return;
+
+  }
+
+  offerSection.style.display = "block";
+
+  offerSlider.innerHTML =
+    offers.map(function (product) {
+
+      const price = Number(product.price || 0);
+      const offer = Number(product.offer_price || 0);
+
+      return `
+        <div class="offer-card">
+
+          <div class="offer-badge">
+            🔥 SPECIAL OFFER
+          </div>
+
+          <img
+            src="${escapeHTML(product.image_url)}"
+            alt="${escapeHTML(product.name || "Offer")}"
+          >
+
+          <h3>
+            ${escapeHTML(product.name || "Product")}
+          </h3>
+
+          <div class="offer-price">
+            <b>₹${offer}</b>
+            <del>₹${price}</del>
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
 function escapeHTML(value) {
   return String(value)
     .replace(/&/g, "&amp;")
