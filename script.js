@@ -228,6 +228,7 @@ function render() {
       `;
 
     }).join("");
+   startOfferAutoScroll();
 
 }
 function startOfferAutoScroll() {
