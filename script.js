@@ -36,6 +36,8 @@ async function loadProducts() {
     }
 
     products = await response.json();
+    
+    alert("Products count: " + products.length);
 
     console.log("Products loaded:", products);
 
