@@ -158,6 +158,43 @@ function render() {
     `;
 
   }).join("");
+    
+  document.querySelectorAll(".qty-select").forEach(function (select) {
+
+    select.addEventListener("change", function () {
+
+      const id = this.dataset.id;
+
+      const product = products.find(function (item) {
+        return String(item.id) === String(id);
+      });
+
+      if (!product) return;
+
+      let selectedPrice = Number(product.price || 0);
+
+      if (this.value === "0.5") {
+        selectedPrice = Number(product.price_500g || 0);
+      }
+
+      if (this.value === "0.25") {
+        selectedPrice = Number(product.price_250g || 0);
+      }
+
+      if (this.value === "0.1") {
+        selectedPrice = Number(product.price_100g || 0);
+      }
+
+      const priceBox =
+        this.parentElement.querySelector(".product-price");
+
+      if (priceBox) {
+        priceBox.innerHTML = "<b>₹" + selectedPrice + "</b>";
+      }
+
+    });
+
+  });
 
   document
     .querySelectorAll(".add-cart-btn")
