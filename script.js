@@ -133,7 +133,13 @@ function render() {
         <div>
           ${priceHTML}
         </div>
-
+        
+<select class="qty-select" data-id="${product.id}">
+  <option value="1">1 KG</option>
+  <option value="0.5">500 G</option>
+  <option value="0.25">250 G</option>
+  <option value="0.1">100 G</option>
+</select>
        ${
   Number(product.stock || 0) <= 0
     ? `<button type="button" class="add-cart-btn" disabled>
@@ -229,12 +235,7 @@ function render() {
             <b>₹${offer}</b>
             <del>₹${price}</del>
           </div>
-          <select class="qty-select" data-id="${product.id}">
-  <option value="1">1 KG</option>
-  <option value="0.5">500 G</option>
-  <option value="0.25">250 G</option>
-  <option value="0.1">100 G</option>
-</select>
+  
 
         </div>
       `;
