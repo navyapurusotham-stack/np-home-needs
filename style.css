@@ -1,4 +1,4 @@
-```css
+7```css
 * {
   box-sizing: border-box;
 }
@@ -624,7 +624,9 @@ footer p {
   display: flex;
   gap: 14px;
   overflow-x: auto;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
   padding: 5px 2px 12px;
 }
 
