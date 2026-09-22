@@ -507,11 +507,12 @@ async function saveOrderToSupabase() {
 
       return (
         item.name +
-        " x " +
-        item.qty +
-        " = ₹" +
-        (item.price * item.qty)
-      );
+" (" +
+(item.quantityLabel || "1 KG") +
+") x " +
+item.qty +
+" = ₹" +
+(item.price * item.qty)
 
     }).join(", ");
 
