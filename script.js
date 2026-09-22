@@ -455,9 +455,9 @@ function updateCart() {
         <br>
          
         ${item.quantityLabel || "1 KG"}
+<br>
 
-        ₹${item.price} × ${item.qty}
-        = ₹${itemTotal}
+₹${item.price} × ${item.qty}
 
         <br>
 
