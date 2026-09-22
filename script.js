@@ -515,6 +515,7 @@ async function saveOrderToSupabase() {
 item.qty +
 " = ₹" +
 (item.price * item.qty)
+      );
 
     }).join(", ");
 
