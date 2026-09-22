@@ -453,6 +453,8 @@ function updateCart() {
 
         <b>${escapeHTML(item.name)}</b>
         <br>
+         
+        ${item.quantityLabel || "1 KG"}
 
         ₹${item.price} × ${item.qty}
         = ₹${itemTotal}
