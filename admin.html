@@ -640,7 +640,22 @@
 
 
     // ================= LOAD PRODUCTS =================
+ 
+    function filterAdminProducts() {
+  const search =
+    document.getElementById("adminProductSearch").value
+      .toLowerCase()
+      .trim();
 
+  document.querySelectorAll("#productsList .product").forEach(function (product) {
+    const name = product.innerText.toLowerCase();
+
+    product.style.display =
+      !search || name.includes(search)
+        ? ""
+        : "none";
+  });
+}
     async function loadProducts() {
 
       const list =
