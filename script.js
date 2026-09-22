@@ -229,12 +229,7 @@ function render() {
             <b>₹${offer}</b>
             <del>₹${price}</del>
           </div>
-          <div class="offer-price">
-  <b>₹${offer}</b>
-  <del>₹${price}</del>
-</div>
-
-<select class="qty-select">
+          <select class="qty-select" data-id="${product.id}">
   <option value="1">1 KG</option>
   <option value="0.5">500 G</option>
   <option value="0.25">250 G</option>
