@@ -341,32 +341,54 @@ function addToCart(id) {
     return;
   }
 
-  const existing = cartData.find(function (item) {
-    return String(item.id) === String(id);
-  });
+  const select =
+    document.querySelector(
+      '.qty-select[data-id="' + id + '"]'
+    );
 
-  const price =
-    Number(product.offer_price) > 0 &&
-    Number(product.offer_price) < Number(product.price)
-      ? Number(product.offer_price)
-      : Number(product.price || 0);
+  const selectedQty =
+    select ? select.value : "1";
 
-  if (existing) {
-    existing.qty++;
-  } else {
+  let price = Number(product.price || 0);
+  let quantityLabel = "1 KG";
 
-    cartData.push({
-      id: product.id,
-      name: product.name,
-      price: price,
-      qty: 1
-    });
-
+  if (selectedQty === "0.5") {
+    price = Number(product.price_500g || 0);
+    quantityLabel = "500 G";
   }
+
+  if (selectedQty === "0.25") {
+    price = Number(product.price_250g || 0);
+    quantityLabel = "250 G";
+  }
+
+  if (selectedQty === "0.1") {
+    price = Number(product.price_100g || 0);
+    quantityLabel = "100 G";
+  }
+
+  if (price <= 0) {
+    alert(quantityLabel + " price available లేదు.");
+    return;
+  }
+
+  cartData.push({
+    id: product.id + "_" + selectedQty,
+    productId: product.id,
+    name: product.name,
+    price: price,
+    qty: 1,
+    quantityLabel: quantityLabel
+  });
 
   updateCart();
 
-  alert(product.name + " cart లో add అయింది ✅");
+  alert(
+    product.name +
+    " (" +
+    quantityLabel +
+    ") cart లో add అయింది ✅"
+  );
 }
 
 function removeFromCart(id) {
