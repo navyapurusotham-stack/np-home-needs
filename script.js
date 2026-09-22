@@ -44,11 +44,13 @@ async function loadProducts() {
     render();
     updateCart();
 
-  } catch (error) {
+    } catch (error) {
     console.error("Loading error:", error);
     grid.innerHTML = "<p>Products load కాలేదు.</p>";
   }
-renderSpecialOffers(); {
+}
+
+function render() {
   const grid = document.getElementById("grid");
 
   renderSpecialOffers();
