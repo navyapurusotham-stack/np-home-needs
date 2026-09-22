@@ -624,15 +624,17 @@ async function order() {
 
   cartData.forEach(function (item) {
 
-    message +=
-      item.name +
-      " x " +
-      item.qty +
-      " = ₹" +
-      (item.price * item.qty) +
-      "\n";
+  message +=
+    item.name +
+    " (" +
+    (item.quantityLabel || "1 KG") +
+    ") x " +
+    item.qty +
+    " = ₹" +
+    (item.price * item.qty) +
+    "\n";
 
-  });
+});
 
   message +=
     "\nTotal: ₹" +
