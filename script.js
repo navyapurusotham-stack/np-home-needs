@@ -668,7 +668,7 @@ window.render = render;
 document.addEventListener(
   "DOMContentLoaded",
   function () {
-
+  alert("JS working");
     loadProducts();
     updateCart();
 
