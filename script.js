@@ -48,9 +48,7 @@ async function loadProducts() {
     console.error("Loading error:", error);
     grid.innerHTML = "<p>Products load కాలేదు.</p>";
   }
-}
-
-function render() {
+renderSpecialOffers(); {
   const grid = document.getElementById("grid");
 
   renderSpecialOffers();
