@@ -130,9 +130,9 @@ function render() {
           ${escapeHTML(product.category || "")}
         </p>
 
-        <div>
-          ${priceHTML}
-        </div>
+        <div class="product-price">
+  ${priceHTML}
+</div>
         
 <select class="qty-select" data-id="${product.id}">
   <option value="1">1 KG</option>
