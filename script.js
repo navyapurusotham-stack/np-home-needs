@@ -53,7 +53,7 @@ async function loadProducts() {
 function render() {
   const grid = document.getElementById("grid");
 
-  // renderSpecialOffers();
+  renderSpecialOffers();
 
   if (!grid) return;
 
