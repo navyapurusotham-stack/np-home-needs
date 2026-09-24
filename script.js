@@ -105,17 +105,29 @@ function render() {
         '">';
     }
 
-    let priceHTML =
-      "<b>₹" + finalPrice + "</b>";
+    let unitText =
+  product.unit
+    ? " / " + escapeHTML(product.unit)
+    : "";
 
-    if (offer > 0 && offer < price) {
-      priceHTML =
-        "<b>₹" +
-        offer +
-        "</b> <del>₹" +
-        price +
-        "</del>";
-    }
+let priceHTML =
+  "<b>₹" + finalPrice + "</b>" + unitText;
+
+if (offer > 0 && offer < price) {
+  priceHTML =
+    "<b>₹" +
+    offer +
+    "</b>" +
+    unitText +
+    " <del>₹" +
+    price +
+    "</del>";
+}
+    
+    const unitText =
+  product.unit
+    ? " / " + escapeHTML(product.unit)
+    : "";
 
     return `
       <div class="product">
