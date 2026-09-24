@@ -365,13 +365,21 @@ function addToCart(id) {
     return;
   }
 
-  const select =
-    document.querySelector(
-      '.qty-select[data-id="' + id + '"]'
-    );
+  let selectedQty = "1";
 
-  const selectedQty =
-    select ? select.value : "1";
+const box =
+  document.querySelector(
+    '.qty-buttons[data-id="' + id + '"]'
+  );
+
+if (box) {
+  const activeButton =
+    box.querySelector(".selected");
+
+  if (activeButton) {
+    selectedQty = activeButton.dataset.qty;
+  }
+}
 
   let normalPrice = Number(product.price || 0);
 let offerPrice = Number(product.offer_price || 0);
