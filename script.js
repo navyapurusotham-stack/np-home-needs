@@ -389,9 +389,7 @@ function addToCart(id) {
   const selectedQty =
     select ? select.value : "1";
 
-  let price = Number(product.price || 0);
-
-let normalPrice = Number(product.price || 0);
+  let normalPrice = Number(product.price || 0);
 let offerPrice = Number(product.offer_price || 0);
 
 let price =
