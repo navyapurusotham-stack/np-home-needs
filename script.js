@@ -123,11 +123,6 @@ if (offer > 0 && offer < price) {
     price +
     "</del>";
 }
-    
-    const unitText =
-  product.unit
-    ? " / " + escapeHTML(product.unit)
-    : "";
 
     return `
       <div class="product">
