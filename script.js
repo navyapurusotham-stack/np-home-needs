@@ -220,16 +220,17 @@ ${
       ? selectedOffer
       : selectedPrice;
 
+  if (priceBox) {
   priceBox.innerHTML =
     "<b>₹" +
-    finalSelectedPrice +
+    selectedPrice +
     "</b>" +
     (
       product.unit
         ? " / " + escapeHTML(product.unit)
         : ""
     );
-    }
+  }
 
     });
 
