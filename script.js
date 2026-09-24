@@ -143,12 +143,22 @@ if (offer > 0 && offer < price) {
   ${priceHTML}
 </div>
         
-<select class="qty-select" data-id="${product.id}">
-  <option value="1">1 KG</option>
-  <option value="0.5">500 G</option>
-  <option value="0.25">250 G</option>
-  <option value="0.1">100 G</option>
-</select>
+${
+  product.unit === "kg"
+    ? `
+      <select class="qty-select" data-id="${product.id}">
+        <option value="1">1 KG</option>
+        <option value="0.5">500 G</option>
+        <option value="0.25">250 G</option>
+        <option value="0.1">100 G</option>
+      </select>
+    `
+    : `
+      <select class="qty-select" data-id="${product.id}">
+        <option value="1">1 ${escapeHTML(product.unit || "Unit")}</option>
+      </select>
+    `
+}
        ${
   Number(product.stock || 0) <= 0
     ? `<button type="button" class="add-cart-btn" disabled>
