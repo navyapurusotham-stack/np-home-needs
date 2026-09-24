@@ -208,7 +208,15 @@ ${
         this.parentElement.querySelector(".product-price");
 
       if (priceBox) {
-        priceBox.innerHTML = "<b>₹" + selectedPrice + "</b>";
+  priceBox.innerHTML =
+    "<b>₹" +
+    selectedPrice +
+    "</b>" +
+    (
+      product.unit
+        ? " / " + escapeHTML(product.unit)
+        : ""
+    );
       }
 
     });
