@@ -178,11 +178,14 @@ ${
 
   }).join("");
     
-    document.querySelectorAll(".qty-select").forEach(function (select) {
+    document.querySelectorAll(".qty-buttons").forEach(function (box) {
 
-    select.addEventListener("change", function () {
+  box.querySelectorAll("button").forEach(function (button) {
 
-      const id = this.dataset.id;
+    button.addEventListener("click", function () {
+
+      const id = box.dataset.id;
+      const selectedQty = this.dataset.qty;
 
       const product = products.find(function (item) {
         return String(item.id) === String(id);
@@ -192,48 +195,30 @@ ${
 
       let selectedPrice = Number(product.price || 0);
 
-      if (this.value === "0.5") {
+      if (selectedQty === "0.5") {
         selectedPrice = Number(product.price_500g || 0);
       }
 
-      if (this.value === "0.25") {
+      if (selectedQty === "0.25") {
         selectedPrice = Number(product.price_250g || 0);
       }
 
-      if (this.value === "0.1") {
+      if (selectedQty === "0.1") {
         selectedPrice = Number(product.price_100g || 0);
       }
 
       const priceBox =
-        this.parentElement.querySelector(".product-price");
+        box.parentElement.querySelector(".product-price");
 
       if (priceBox) {
-
-        let selectedOffer = 0;
-
-        if (this.value === "1") {
-          selectedOffer = Number(product.offer_price || 0);
-        }
-
-        const finalSelectedPrice =
-          selectedOffer > 0 && selectedOffer < selectedPrice
-            ? selectedOffer
-            : selectedPrice;
-
-        priceBox.innerHTML =
-          "<b>₹" +
-          finalSelectedPrice +
-          "</b>" +
-          (
-            product.unit
-              ? " / " + escapeHTML(product.unit)
-              : ""
-          );
+        priceBox.innerHTML = "<b>₹" + selectedPrice + "</b>";
       }
 
     });
 
   });
+
+});
 
   document
     .querySelectorAll(".add-cart-btn")
