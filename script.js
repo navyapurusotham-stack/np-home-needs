@@ -207,17 +207,29 @@ ${
       const priceBox =
         this.parentElement.querySelector(".product-price");
 
-      if (priceBox) {
+    if (priceBox) {
+
+  let selectedOffer = 0;
+
+  if (this.value === "1") {
+    selectedOffer = Number(product.offer_price || 0);
+  }
+
+  const finalSelectedPrice =
+    selectedOffer > 0 && selectedOffer < selectedPrice
+      ? selectedOffer
+      : selectedPrice;
+
   priceBox.innerHTML =
     "<b>₹" +
-    selectedPrice +
+    finalSelectedPrice +
     "</b>" +
     (
       product.unit
         ? " / " + escapeHTML(product.unit)
         : ""
     );
-      }
+    }
 
     });
 
