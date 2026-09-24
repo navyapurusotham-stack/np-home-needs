@@ -178,7 +178,7 @@ ${
 
   }).join("");
     
-  document.querySelectorAll(".qty-select").forEach(function (select) {
+    document.querySelectorAll(".qty-select").forEach(function (select) {
 
     select.addEventListener("change", function () {
 
@@ -207,30 +207,29 @@ ${
       const priceBox =
         this.parentElement.querySelector(".product-price");
 
-    if (priceBox) {
+      if (priceBox) {
 
-  let selectedOffer = 0;
+        let selectedOffer = 0;
 
-  if (this.value === "1") {
-    selectedOffer = Number(product.offer_price || 0);
-  }
+        if (this.value === "1") {
+          selectedOffer = Number(product.offer_price || 0);
+        }
 
-  const finalSelectedPrice =
-    selectedOffer > 0 && selectedOffer < selectedPrice
-      ? selectedOffer
-      : selectedPrice;
+        const finalSelectedPrice =
+          selectedOffer > 0 && selectedOffer < selectedPrice
+            ? selectedOffer
+            : selectedPrice;
 
-  if (priceBox) {
-  priceBox.innerHTML =
-    "<b>₹" +
-    selectedPrice +
-    "</b>" +
-    (
-      product.unit
-        ? " / " + escapeHTML(product.unit)
-        : ""
-    );
-  }
+        priceBox.innerHTML =
+          "<b>₹" +
+          finalSelectedPrice +
+          "</b>" +
+          (
+            product.unit
+              ? " / " + escapeHTML(product.unit)
+              : ""
+          );
+      }
 
     });
 
