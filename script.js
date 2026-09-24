@@ -146,12 +146,12 @@ if (offer > 0 && offer < price) {
 ${
   product.unit === "kg"
     ? `
-      <select class="qty-select" data-id="${product.id}">
-        <option value="1">1 KG</option>
-        <option value="0.5">500 G</option>
-        <option value="0.25">250 G</option>
-        <option value="0.1">100 G</option>
-      </select>
+      <div class="qty-buttons" data-id="${product.id}">
+  <button type="button" data-qty="1">1 KG</button>
+  <button type="button" data-qty="0.5">500 G</button>
+  <button type="button" data-qty="0.25">250 G</button>
+  <button type="button" data-qty="0.1">100 G</button>
+</div>
     `
     : `
       <select class="qty-select" data-id="${product.id}">
