@@ -106,7 +106,7 @@ function render() {
     }
 
     let unitText =
-  product.unit
+  product.unit && product.unit.trim()
     ? " / " + escapeHTML(product.unit)
     : "";
 
