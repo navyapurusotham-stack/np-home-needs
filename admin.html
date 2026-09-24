@@ -337,6 +337,19 @@
         id="productPrice"
         placeholder="Example: 100"
       >
+      <label>Unit</label>
+
+<select id="productUnit">
+  <option value="">No Unit</option>
+  <option value="kg">kg</option>
+  <option value="gram">gram</option>
+  <option value="piece">piece</option>
+  <option value="packet">packet</option>
+  <option value="bundle">bundle</option>
+  <option value="box">box</option>
+  <option value="set">set</option>
+  <option value="litre">litre</option>
+</select>
 <label>500 G Price</label>
 
 <input
@@ -854,7 +867,10 @@
 
       document.getElementById("productPrice").value =
         product.price ?? "";
-    
+   
+      document.getElementById("productUnit").value =
+       product.unit || "";
+      
        document.getElementById("productPrice500g").value =
        product.price_500g ?? "";
 
@@ -918,6 +934,9 @@
 
       const price =
         document.getElementById("productPrice").value;
+      
+      const unit =
+  document.getElementById("productUnit").value;
     
       const price500g =
     document.getElementById("productPrice500g").value;
