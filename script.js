@@ -377,7 +377,11 @@ function addToCart(id) {
     select ? select.value : "1";
 
   let price = Number(product.price || 0);
-  let quantityLabel = "1 KG";
+
+let quantityLabel =
+  product.unit
+    ? "1 " + product.unit
+    : "1";
 
   if (selectedQty === "0.5") {
     price = Number(product.price_500g || 0);
