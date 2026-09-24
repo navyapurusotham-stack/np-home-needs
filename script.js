@@ -378,6 +378,14 @@ function addToCart(id) {
 
   let price = Number(product.price || 0);
 
+let normalPrice = Number(product.price || 0);
+let offerPrice = Number(product.offer_price || 0);
+
+let price =
+  offerPrice > 0 && offerPrice < normalPrice
+    ? offerPrice
+    : normalPrice;
+
 let quantityLabel =
   product.unit
     ? "1 " + product.unit
