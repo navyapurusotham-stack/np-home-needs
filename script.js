@@ -13,7 +13,7 @@ async function loadProducts() {
     return;
   }
 
-  grid.innerHTML = "<p>Products loading...</p>";
+
 
   try {
     const url =
