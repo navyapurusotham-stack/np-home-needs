@@ -186,6 +186,11 @@ ${
 
       const id = box.dataset.id;
       const selectedQty = this.dataset.qty;
+      box.querySelectorAll("button").forEach(function (btn) {
+  btn.classList.remove("selected");
+});
+
+this.classList.add("selected");
 
       const product = products.find(function (item) {
         return String(item.id) === String(id);
