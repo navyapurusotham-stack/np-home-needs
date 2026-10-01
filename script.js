@@ -46,7 +46,7 @@ async function loadProducts() {
 
     } catch (error) {
     console.error("Loading error:", error);
-    grid.innerHTML = "<p>Products load కాలేదు.</p>";
+    
   }
 }
 
@@ -714,7 +714,6 @@ window.render = render;
 document.addEventListener(
   "DOMContentLoaded",
   function () {
-  alert("JS working");
     loadProducts();
     updateCart();
 
